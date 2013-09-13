@@ -18,6 +18,12 @@ module Tennis
       back > front ? wins_ball(@player1) : wins_ball(@player2)
     end
 
+    def status
+      puts @player1.name
+      puts @player1.points
+      puts @player2.name
+      puts @player2.points
+    end
     # Records a win for a ball in a game.
     #
     # winner - The Integer (1 or 2) representing the winning player.
@@ -25,7 +31,7 @@ module Tennis
     # Returns Who won the serve and the score of the winning player. 
     def wins_ball(winner) # =>
       winner.record_won_ball! 
-      "#{winner.to_s} won the serve! Their score is #{winner.score}"
+      "#{winner.name} won the serve! Their score is #{winner.score}"
     end
   end
 
@@ -38,10 +44,7 @@ module Tennis
       rand(2) == 1 ? @name = 'rosencrantz' : @name = 'guildenstern'
       
     end
-    # returns Player name
-    def to_s
-      @name
-    end
+    
     # Increments the score by 1.
     #
     # Returns the integer new score.
@@ -76,20 +79,18 @@ module Tennis
 
     # when a player's points > 3 checks to see if advantage, deuce, or win
     #
-    def special_score 
+    def special_score
+      difference = @points - opponent.points
       #player points - opponent points == 1  
-      if @points - opponent.points == 0
+      if difference == 0
         'deuce'
-      elsif @points > 3 && @points - opponent.points == 1
+      elsif @points > 3 && difference == 1
         'advantage'
-      elsif @points - opponent.points == 2
+      elsif difference == 2
         'win'          
       else 
         'forty'
       end  
-    end
-    # def points_less_opponents
-    #   @points_less_opponents = @points - opponent.points
-    # end
+    end 
   end
 end
