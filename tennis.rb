@@ -10,8 +10,12 @@ module Tennis
       @player1.opponent = @player2
       @player2.opponent = @player1
     end
-
-    
+    #allows the game to be played
+    def serve
+      rosencrantz = rand(10)
+      guildenstern = rand(10)
+      rosencrantz > guildenstern ? wins_ball(@player1) : wins_ball(@player2)
+    end
     # Records a win for a ball in a game.
     #
     # winner - The Integer (1 or 2) representing the winning player.
@@ -19,16 +23,22 @@ module Tennis
     # Returns the score of the winning player. 
     def wins_ball(winner)
       winner.record_won_ball!
+      puts "#{winner.to_s} won the serve!" 
     end
   end
 
   class Player
-    attr_accessor :points, :opponent
+    attr_accessor :points, :opponent, :name
 
     def initialize
       @points = 0
+    rand(2) == 1 ? @name = 'rosencrantz' : @name = 'guildenstern'
+      
     end
 
+    def to_s
+      @name
+    end
     # Increments the score by 1.
     #
     # Returns the integer new score.

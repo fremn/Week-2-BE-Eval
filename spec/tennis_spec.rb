@@ -16,6 +16,13 @@ describe Tennis::Game do
     end
 
   end
+  # describe '#serve' do
+  #   it '' do
+
+  #     expect(game.serve).to 
+  #   endcd m
+
+  # end
 
   describe '#wins_ball' do
     it 'increments the points of the winning player' do
@@ -24,6 +31,7 @@ describe Tennis::Game do
       expect(game.player1.points).to eq(1)
     end
   end
+
 end
 
 describe Tennis::Player do
@@ -47,7 +55,6 @@ describe Tennis::Player do
       expect(player.points).to eq(1)
     end
   end
-
   describe '#score' do
     context 'when points is 0' do
       it 'returns love' do
