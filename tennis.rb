@@ -1,4 +1,4 @@
-  module Tennis
+module Tennis
   class Game
     attr_accessor :player1, :player2
 
@@ -37,7 +37,16 @@
 
     # Returns the String score for the player.
     def score
-      return 'love' if @points == 0
+      case @points
+      when 0
+        'love'
+      when 1
+        'fifteen'
+      when 2
+        'thirty'
+      when 3
+        'forty'
+      end
     end
   end
 end
