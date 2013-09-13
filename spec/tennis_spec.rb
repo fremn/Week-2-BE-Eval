@@ -20,7 +20,8 @@ describe Tennis::Game do
   #   it '' do
 
   #     expect(game.serve).to 
-  #   endcd m
+    
+  #   end
 
   # end
 
@@ -72,14 +73,14 @@ describe Tennis::Player do
     
     context 'when points is 2' do
       it 'returns thirty' do
-         player.points = 2
+        player.points = 2
         player.opponent.points = 1
 
         expect(player.score).to eq('thirty')
       end  
     end
     
-    context 'when points is 3' do
+    context 'when points is 3 and opponents points is 2' do
       it 'returns forty' do
         player.points = 3
         player.opponent.points = 2
@@ -98,16 +99,16 @@ describe Tennis::Player do
     end
     context 'when points is 1 greater than opponents and is 3 or more' do
       it 'returns advantage' do
-        player.points = 5
-        player.opponent.points = 4
+        player.points = 4
+        player.opponent.points = 3
 
         expect(player.score).to eq('advantage') 
       end
     end
     context 'when points is 2 greater than opponents' do
       it 'returns win ' do
-        player.points = 6
-        player.opponent.points = 4
+        player.points = 5
+        player.opponent.points = 3
 
         expect(player.score).to eq('win') 
       end

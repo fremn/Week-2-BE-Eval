@@ -10,20 +10,22 @@ module Tennis
       @player1.opponent = @player2
       @player2.opponent = @player1
     end
-    #allows the game to be played
+    
+    #Assigns one of the players as the winner based on random number
     def serve
-      rosencrantz = rand(10)
-      guildenstern = rand(10)
-      rosencrantz > guildenstern ? wins_ball(@player1) : wins_ball(@player2)
+      front = rand(10)
+      back = rand(10)
+      back > front ? wins_ball(@player1) : wins_ball(@player2)
     end
+
     # Records a win for a ball in a game.
     #
     # winner - The Integer (1 or 2) representing the winning player.
     #
-    # Returns the score of the winning player. 
-    def wins_ball(winner)
-      winner.record_won_ball!
-      puts "#{winner.to_s} won the serve!" 
+    # Returns Who won the serve and the score of the winning player. 
+    def wins_ball(winner) # =>
+      winner.record_won_ball! 
+      "#{winner.to_s} won the serve! Their score is #{winner.score}"
     end
   end
 
@@ -32,10 +34,11 @@ module Tennis
 
     def initialize
       @points = 0
-    rand(2) == 1 ? @name = 'rosencrantz' : @name = 'guildenstern'
+      #names the player either 'rosencrantz' or 'guildenstern'
+      rand(2) == 1 ? @name = 'rosencrantz' : @name = 'guildenstern'
       
     end
-
+    # returns Player name
     def to_s
       @name
     end
@@ -47,8 +50,13 @@ module Tennis
     end
 
     # Returns the String score for the player.
+    #
+    # Example given player1 is a Player with 1 point
+    #   player1.score
+    #   # => fifteen
+    # See special_score method for more
     def score
-       if @points - opponent.points < 2
+      if @points - opponent.points <= 1
         case
         when @points == 0
           'love'
@@ -65,10 +73,12 @@ module Tennis
     end
 
     private
-    # when score > 3 checks to see if advantage, duece, or win
+
+    # when a player's points > 3 checks to see if advantage, deuce, or win
+    #
     def special_score 
-      #player points - opponent points ==1  
-      if @points == opponent.points  
+      #player points - opponent points == 1  
+      if @points - opponent.points == 0
         'deuce'
       elsif @points > 3 && @points - opponent.points == 1
         'advantage'
@@ -78,5 +88,8 @@ module Tennis
         'forty'
       end  
     end
+    # def points_less_opponents
+    #   @points_less_opponents = @points - opponent.points
+    # end
   end
 end
