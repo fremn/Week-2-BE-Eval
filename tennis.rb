@@ -40,32 +40,31 @@ module Tennis
       #player points - opponent points ==1  
       if @points == opponent.points  
         'deuce'
-      elsif @points - opponent.points == 1
+      elsif @points > 3 && @points - opponent.points == 1
         'advantage'
       elsif @points - opponent.points == 2
         'win'          
       else 
         'forty'
       end  
-
-
-
-      # end 
     end
 
     # Returns the String score for the player.
     def score
-      case 
-      when @points == 0
-        'love'
-      when @points == 1
-        'fifteen'
-      when @points == 2
-        'thirty'
-      when @points >= 3
-         special_score || 'forty' 
+       if @points - opponent.points < 2
+        case
+        when @points == 0
+          'love'
+        when @points == 1
+          'fifteen'
+        when @points == 2
+          'thirty'
+        when @points >= 3
+           special_score || 'forty' 
+        end
+      else
+        'win'
       end
-
     end
   end
 end
