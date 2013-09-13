@@ -1,4 +1,4 @@
-module Tennis
+  module Tennis
   class Game
     attr_accessor :player1, :player2
 
