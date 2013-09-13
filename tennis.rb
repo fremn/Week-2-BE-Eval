@@ -40,6 +40,8 @@ module Tennis
       #player points - opponent points ==1  
       if @points == opponent.points  
         'deuce'
+      elsif @points - opponent.points == 1
+        'advantage'    
       else 
         'forty'
       end  
