@@ -16,8 +16,12 @@ module Tennis
       front = rand(10)
       back = rand(10)
       back > front ? wins_ball(@player1) : wins_ball(@player2)
-    end
-
+    end    
+    # Example
+    # =>  rosencrantz
+    # =>  0
+    # =>  guildenstern
+    # =>  2
     def status
       puts @player1.name
       puts @player1.points
@@ -42,7 +46,6 @@ module Tennis
       @points = 0
       #names the player either 'rosencrantz' or 'guildenstern'
       rand(2) == 1 ? @name = 'rosencrantz' : @name = 'guildenstern'
-      
     end
     
     # Increments the score by 1.
@@ -78,7 +81,6 @@ module Tennis
     private
 
     # when a player's points > 3 checks to see if advantage, deuce, or win
-    #
     def special_score
       difference = @points - opponent.points
       #player points - opponent points == 1  
