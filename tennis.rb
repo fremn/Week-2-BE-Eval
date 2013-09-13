@@ -2,6 +2,7 @@ module Tennis
   class Game
     attr_accessor :player1, :player2
 
+    #creates 2 players and sets each to be the others opponent
     def initialize
       @player1 = Player.new
       @player2 = Player.new
@@ -35,6 +36,25 @@ module Tennis
       @points += 1
     end
 
+    # Returns the String score for the player.
+    def score
+       if @points - opponent.points < 2
+        case
+        when @points == 0
+          'love'
+        when @points == 1
+          'fifteen'
+        when @points == 2
+          'thirty'
+        when @points >= 3
+          special_score
+        end
+      else
+        'win'
+      end
+    end
+
+    private
     # when score > 3 checks to see if advantage, duece, or win
     def special_score 
       #player points - opponent points ==1  
@@ -47,24 +67,6 @@ module Tennis
       else 
         'forty'
       end  
-    end
-
-    # Returns the String score for the player.
-    def score
-       if @points - opponent.points < 2
-        case
-        when @points == 0
-          'love'
-        when @points == 1
-          'fifteen'
-        when @points == 2
-          'thirty'
-        when @points >= 3
-           special_score || 'forty' 
-        end
-      else
-        'win'
-      end
     end
   end
 end
