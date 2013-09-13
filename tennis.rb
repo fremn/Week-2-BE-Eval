@@ -41,18 +41,13 @@ module Tennis
       if @points == opponent.points  
         'deuce'
       elsif @points - opponent.points == 1
-        'advantage'    
+        'advantage'
+      elsif @points - opponent.points == 2
+        'win'          
       else 
         'forty'
       end  
 
-      # #player points - opponent points ==1
-      # elsif @points == opponent.points
-            
-      #   'advantage'
-      # #player points - opponent points ==2  
-      # when 
-      #   'win'
 
 
       # end 
